@@ -1,20 +1,12 @@
-/// fact_orders → dim_customers  (many orders per customer)
 relationship fact_orders_customer_id_dim_customers_customer_id
-	fromTable: fact_orders
-	fromColumn: customer_id
-	toTable: dim_customers
-	toColumn: customer_id
+	fromColumn: fact_orders.customer_id
+	toColumn: dim_customers.customer_id
 
-/// fact_orders → dim_products  (many orders per product)
 relationship fact_orders_product_id_dim_products_product_id
-	fromTable: fact_orders
-	fromColumn: product_id
-	toTable: dim_products
-	toColumn: product_id
+	fromColumn: fact_orders.product_id
+	toColumn: dim_products.product_id
 
-/// customer_churn_risk → dim_customers  (one score per customer)
 relationship customer_churn_risk_customer_id_dim_customers_customer_id
-	fromTable: customer_churn_risk
-	fromColumn: customer_id
-	toTable: dim_customers
-	toColumn: customer_id
+	fromColumn: customer_churn_risk.customer_id
+	toColumn: dim_customers.customer_id
+

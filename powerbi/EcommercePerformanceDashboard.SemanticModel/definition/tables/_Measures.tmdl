@@ -1,49 +1,37 @@
 table _Measures
 	isHidden
 
-	/// ── Revenue & Orders ─────────────────────────────────────────────────────
-
-	measure 'Total Revenue' =
-			CALCULATE(SUM(fact_orders[revenue]), fact_orders[is_completed] = TRUE())
+	measure 'Total Revenue' = CALCULATE(SUM(fact_orders[revenue]), fact_orders[is_completed] = TRUE())
+		formatString: \£#,0.00;-\£#,0.00;\£#,0.00
 		displayFolder: Revenue
-		formatString: #,0.00
 
-	measure 'Total Orders' =
-			CALCULATE(COUNTROWS(fact_orders), fact_orders[is_completed] = TRUE())
-		displayFolder: Orders
+	measure 'Total Orders' = CALCULATE(COUNTROWS(fact_orders), fact_orders[is_completed] = TRUE())
 		formatString: #,0
-
-	measure 'Average Order Value' =
-			DIVIDE([Total Revenue], [Total Orders], 0)
-		displayFolder: Revenue
-		formatString: #,0.00
-
-	measure 'Units Sold' =
-			CALCULATE(SUM(fact_orders[quantity]), fact_orders[is_completed] = TRUE())
 		displayFolder: Orders
+
+	measure 'Average Order Value' = DIVIDE([Total Revenue], [Total Orders], 0)
+		formatString: \£#,0.00;-\£#,0.00;\£#,0.00
+		displayFolder: Revenue
+
+	measure 'Units Sold' = CALCULATE(SUM(fact_orders[quantity]), fact_orders[is_completed] = TRUE())
 		formatString: #,0
+		displayFolder: Orders
 
-	measure 'Gross Margin' =
-			CALCULATE(SUM(fact_orders[margin]), fact_orders[is_completed] = TRUE())
+	measure 'Gross Margin' = CALCULATE(SUM(fact_orders[margin]), fact_orders[is_completed] = TRUE())
+		formatString: \£#,0.00;-\£#,0.00;\£#,0.00
 		displayFolder: Revenue
-		formatString: #,0.00
 
-	measure 'Gross Margin %' =
-			DIVIDE([Gross Margin], [Total Revenue], 0)
-		displayFolder: Revenue
+	measure 'Gross Margin %' = DIVIDE([Gross Margin], [Total Revenue], 0)
 		formatString: 0.00%
+		displayFolder: Revenue
 
-	/// ── Customers ────────────────────────────────────────────────────────────
-
-	measure 'Active Customers' =
-			CALCULATE(DISTINCTCOUNT(fact_orders[customer_id]), fact_orders[is_completed] = TRUE())
-		displayFolder: Customers
+	measure 'Active Customers' = CALCULATE(DISTINCTCOUNT(fact_orders[customer_id]), fact_orders[is_completed] = TRUE())
 		formatString: #,0
-
-	measure 'New Customers' =
-			SUM(weekly_kpis[new_customers])
 		displayFolder: Customers
+
+	measure 'New Customers' = SUM(weekly_kpis[new_customers])
 		formatString: #,0
+		displayFolder: Customers
 
 	measure 'Repeat Customers' =
 			CALCULATE(
@@ -51,15 +39,12 @@ table _Measures
 			    fact_orders[is_completed] = TRUE(),
 			    RELATED(dim_customers[is_repeat_customer]) = TRUE()
 			)
-		displayFolder: Customers
 		formatString: #,0
-
-	measure 'Repeat Customer Rate' =
-			DIVIDE([Repeat Customers], [Active Customers], 0)
 		displayFolder: Customers
-		formatString: 0.00%
 
-	/// ── Funnel ───────────────────────────────────────────────────────────────
+	measure 'Repeat Customer Rate' = DIVIDE([Repeat Customers], [Active Customers], 0)
+		formatString: 0.00%
+		displayFolder: Customers
 
 	measure 'Conversion Rate' =
 			DIVIDE(
@@ -67,8 +52,8 @@ table _Measures
 			    CALCULATE(SUM(fact_orders[visits])),
 			    0
 			)
-		displayFolder: Funnel
 		formatString: 0.00%
+		displayFolder: Funnel
 
 	measure 'Cart Abandonment Rate' =
 			1 - DIVIDE(
@@ -76,97 +61,54 @@ table _Measures
 			    CALCULATE(SUM(fact_orders[cart_additions])),
 			    0
 			)
-		displayFolder: Funnel
 		formatString: 0.00%
-
-	/// ── WoW Growth ───────────────────────────────────────────────────────────
+		displayFolder: Funnel
 
 	measure 'WoW Revenue Growth' =
-			VAR CurrentWeek =
-			    MAX(weekly_kpis[week_start])
-			VAR PrevWeek =
-			    CurrentWeek - 7
-			VAR ThisRev =
-			    CALCULATE(
-			        SUM(weekly_kpis[total_revenue]),
-			        weekly_kpis[week_start] = CurrentWeek
-			    )
-			VAR PrevRev =
-			    CALCULATE(
-			        SUM(weekly_kpis[total_revenue]),
-			        weekly_kpis[week_start] = PrevWeek
-			    )
-			RETURN
-			    DIVIDE(ThisRev - PrevRev, PrevRev, 0)
-		displayFolder: Growth
+			VAR CurrentWeek = MAX(weekly_kpis[week_start])
+			VAR PrevWeek = CurrentWeek - 7
+			VAR ThisRev = CALCULATE(SUM(weekly_kpis[total_revenue]), weekly_kpis[week_start] = CurrentWeek)
+			VAR PrevRev = CALCULATE(SUM(weekly_kpis[total_revenue]), weekly_kpis[week_start] = PrevWeek)
+			RETURN DIVIDE(ThisRev - PrevRev, PrevRev, 0)
 		formatString: +0.00%;-0.00%;0.00%
+		displayFolder: Growth
 
 	measure 'WoW Orders Growth' =
-			VAR CurrentWeek =
-			    MAX(weekly_kpis[week_start])
-			VAR PrevWeek =
-			    CurrentWeek - 7
-			VAR ThisOrd =
-			    CALCULATE(
-			        SUM(weekly_kpis[total_orders]),
-			        weekly_kpis[week_start] = CurrentWeek
-			    )
-			VAR PrevOrd =
-			    CALCULATE(
-			        SUM(weekly_kpis[total_orders]),
-			        weekly_kpis[week_start] = PrevWeek
-			    )
-			RETURN
-			    DIVIDE(ThisOrd - PrevOrd, PrevOrd, 0)
-		displayFolder: Growth
+			VAR CurrentWeek = MAX(weekly_kpis[week_start])
+			VAR PrevWeek = CurrentWeek - 7
+			VAR ThisOrd = CALCULATE(SUM(weekly_kpis[total_orders]), weekly_kpis[week_start] = CurrentWeek)
+			VAR PrevOrd = CALCULATE(SUM(weekly_kpis[total_orders]), weekly_kpis[week_start] = PrevWeek)
+			RETURN DIVIDE(ThisOrd - PrevOrd, PrevOrd, 0)
 		formatString: +0.00%;-0.00%;0.00%
+		displayFolder: Growth
 
-	/// ── Predictive ───────────────────────────────────────────────────────────
-
-	measure 'Predicted Revenue' =
-			CALCULATE(
-			    SUM(sales_forecast[predicted_revenue]),
-			    NOT(ISBLANK(sales_forecast[predicted_revenue]))
-			)
+	measure 'Predicted Revenue' = CALCULATE(SUM(sales_forecast[predicted_revenue]), NOT(ISBLANK(sales_forecast[predicted_revenue])))
+		formatString: \£#,0.00;-\£#,0.00;\£#,0.00
 		displayFolder: Predictions
-		formatString: #,0.00
 
-	measure 'Forecast Error %' =
-			DIVIDE(
-			    ABS(SUM(sales_forecast[prediction_error])),
-			    SUM(sales_forecast[actual_revenue]),
-			    0
-			)
-		displayFolder: Predictions
+	measure 'Forecast Error %' = DIVIDE(ABS(SUM(sales_forecast[prediction_error])), SUM(sales_forecast[actual_revenue]), 0)
 		formatString: 0.00%
-
-	measure 'High Risk Customers' =
-			CALCULATE(
-			    COUNTROWS(customer_churn_risk),
-			    customer_churn_risk[risk_level] = "High"
-			)
 		displayFolder: Predictions
+
+	measure 'High Risk Customers' = CALCULATE(COUNTROWS(customer_churn_risk), customer_churn_risk[risk_level] = "High")
 		formatString: #,0
-
-	measure 'Churn Risk Rate' =
-			DIVIDE([High Risk Customers], COUNTROWS(customer_churn_risk), 0)
 		displayFolder: Predictions
+
+	measure 'Churn Risk Rate' = DIVIDE([High Risk Customers], COUNTROWS(customer_churn_risk), 0)
 		formatString: 0.00%
-
-	measure 'Increasing Demand Categories' =
-			CALCULATE(
-			    DISTINCTCOUNT(product_demand_predictions[product_category]),
-			    product_demand_predictions[demand_trend] = "Increasing"
-			)
 		displayFolder: Predictions
+
+	measure 'Increasing Demand Categories' = CALCULATE(DISTINCTCOUNT(product_demand_predictions[product_category]), product_demand_predictions[demand_trend] = "Increasing")
 		formatString: #,0
+		displayFolder: Predictions
 
 	partition _Measures-_Measures = m
 		mode: import
 		source =
-			let
-			    Source = #table(type table [], {})
-			in
-			    Source
+				let
+				    Source = #table(type table [], {})
+				in
+				    Source
 
 	annotation PBI_ResultType = Table
+

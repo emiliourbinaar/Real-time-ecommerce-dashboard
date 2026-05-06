@@ -7,15 +7,15 @@ table fact_orders
 
 	column order_date
 		dataType: dateTime
+		formatString: Short Date
 		summarizeBy: none
 		sourceColumn: order_date
-		formatString: Short Date
 
 	column week_start
 		dataType: dateTime
+		formatString: Short Date
 		summarizeBy: none
 		sourceColumn: week_start
-		formatString: Short Date
 
 	column year
 		dataType: int64
@@ -69,27 +69,27 @@ table fact_orders
 
 	column unit_price
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: none
 		sourceColumn: unit_price
-		formatString: #,0.00
 
 	column discount
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: discount
-		formatString: 0.00%
 
 	column revenue
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: revenue
-		formatString: #,0.00
 
 	column margin
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: margin
-		formatString: #,0.00
 
 	column city
 		dataType: string
@@ -138,56 +138,57 @@ table fact_orders
 
 	column conversion_rate
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: conversion_rate
-		formatString: 0.00%
 
 	column cart_abandonment_rate
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: cart_abandonment_rate
-		formatString: 0.00%
 
 	partition fact_orders-fact_orders = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "fact_orders.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"order_id", type text},
-			        {"order_date", type date},
-			        {"week_start", type date},
-			        {"year", Int64.Type},
-			        {"month", Int64.Type},
-			        {"week_number", Int64.Type},
-			        {"quarter", Int64.Type},
-			        {"customer_id", type text},
-			        {"customer_segment", type text},
-			        {"product_id", type text},
-			        {"product_category", type text},
-			        {"product_name", type text},
-			        {"quantity", Int64.Type},
-			        {"unit_price", type number},
-			        {"discount", type number},
-			        {"revenue", type number},
-			        {"margin", type number},
-			        {"city", type text},
-			        {"sales_channel", type text},
-			        {"campaign_name", type text},
-			        {"visits", Int64.Type},
-			        {"cart_additions", Int64.Type},
-			        {"completed_orders", Int64.Type},
-			        {"payment_method", type text},
-			        {"order_status", type text},
-			        {"is_completed", type logical},
-			        {"conversion_rate", type number},
-			        {"cart_abandonment_rate", type number}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "fact_orders.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"order_id", type text},
+				        {"order_date", type date},
+				        {"week_start", type date},
+				        {"year", Int64.Type},
+				        {"month", Int64.Type},
+				        {"week_number", Int64.Type},
+				        {"quarter", Int64.Type},
+				        {"customer_id", type text},
+				        {"customer_segment", type text},
+				        {"product_id", type text},
+				        {"product_category", type text},
+				        {"product_name", type text},
+				        {"quantity", Int64.Type},
+				        {"unit_price", type number},
+				        {"discount", type number},
+				        {"revenue", type number},
+				        {"margin", type number},
+				        {"city", type text},
+				        {"sales_channel", type text},
+				        {"campaign_name", type text},
+				        {"visits", Int64.Type},
+				        {"cart_additions", Int64.Type},
+				        {"completed_orders", Int64.Type},
+				        {"payment_method", type text},
+				        {"order_status", type text},
+				        {"is_completed", type logical},
+				        {"conversion_rate", type number},
+				        {"cart_abandonment_rate", type number}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

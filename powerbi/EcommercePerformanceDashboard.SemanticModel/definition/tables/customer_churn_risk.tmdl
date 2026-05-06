@@ -18,9 +18,9 @@ table customer_churn_risk
 
 	column total_revenue
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: total_revenue
-		formatString: #,0.00
 
 	column purchase_frequency
 		dataType: int64
@@ -29,15 +29,15 @@ table customer_churn_risk
 
 	column avg_order_value
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: avg_order_value
-		formatString: #,0.00
 
 	column churn_risk_probability
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: churn_risk_probability
-		formatString: 0.00%
 
 	column risk_level
 		dataType: string
@@ -47,23 +47,24 @@ table customer_churn_risk
 	partition customer_churn_risk-customer_churn_risk = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "customer_churn_risk.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"customer_id", type text},
-			        {"customer_segment", type text},
-			        {"days_since_last_purchase", Int64.Type},
-			        {"total_revenue", type number},
-			        {"purchase_frequency", Int64.Type},
-			        {"avg_order_value", type number},
-			        {"churn_risk_probability", type number},
-			        {"risk_level", type text}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "customer_churn_risk.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"customer_id", type text},
+				        {"customer_segment", type text},
+				        {"days_since_last_purchase", Int64.Type},
+				        {"total_revenue", type number},
+				        {"purchase_frequency", Int64.Type},
+				        {"avg_order_value", type number},
+				        {"churn_risk_probability", type number},
+				        {"risk_level", type text}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

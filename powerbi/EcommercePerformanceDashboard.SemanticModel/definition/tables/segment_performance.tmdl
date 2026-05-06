@@ -8,9 +8,9 @@ table segment_performance
 
 	column total_revenue
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: total_revenue
-		formatString: #,0.00
 
 	column total_orders
 		dataType: int64
@@ -24,15 +24,15 @@ table segment_performance
 
 	column avg_order_value
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: avg_order_value
-		formatString: #,0.00
 
 	column total_margin
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: total_margin
-		formatString: #,0.00
 
 	column repeat_customers
 		dataType: double
@@ -41,37 +41,38 @@ table segment_performance
 
 	column gross_margin_pct
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: gross_margin_pct
-		formatString: 0.00%
 
 	column repeat_rate
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: average
 		sourceColumn: repeat_rate
-		formatString: 0.00%
 
 	partition segment_performance-segment_performance = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "segment_performance.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"customer_segment", type text},
-			        {"total_revenue", type number},
-			        {"total_orders", Int64.Type},
-			        {"unique_customers", Int64.Type},
-			        {"avg_order_value", type number},
-			        {"total_margin", type number},
-			        {"repeat_customers", type number},
-			        {"gross_margin_pct", type number},
-			        {"repeat_rate", type number}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "segment_performance.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"customer_segment", type text},
+				        {"total_revenue", type number},
+				        {"total_orders", Int64.Type},
+				        {"unique_customers", Int64.Type},
+				        {"avg_order_value", type number},
+				        {"total_margin", type number},
+				        {"repeat_customers", type number},
+				        {"gross_margin_pct", type number},
+				        {"repeat_rate", type number}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -3,27 +3,27 @@ table sales_forecast
 	column week_start
 		dataType: dateTime
 		isKey
+		formatString: Short Date
 		summarizeBy: none
 		sourceColumn: week_start
-		formatString: Short Date
 
 	column actual_revenue
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: actual_revenue
-		formatString: #,0.00
 
 	column predicted_revenue
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: predicted_revenue
-		formatString: #,0.00
 
 	column prediction_error
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: prediction_error
-		formatString: #,0.00
 
 	column model_name
 		dataType: string
@@ -33,20 +33,21 @@ table sales_forecast
 	partition sales_forecast-sales_forecast = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "sales_forecast.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"week_start", type date},
-			        {"actual_revenue", type number},
-			        {"predicted_revenue", type number},
-			        {"prediction_error", type number},
-			        {"model_name", type text}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "sales_forecast.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"week_start", type date},
+				        {"actual_revenue", type number},
+				        {"predicted_revenue", type number},
+				        {"prediction_error", type number},
+				        {"model_name", type text}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

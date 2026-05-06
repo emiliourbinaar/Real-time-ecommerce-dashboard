@@ -7,9 +7,9 @@ table product_demand_predictions
 
 	column week
 		dataType: dateTime
+		formatString: Short Date
 		summarizeBy: none
 		sourceColumn: week
-		formatString: Short Date
 
 	column actual_units_sold
 		dataType: int64
@@ -29,20 +29,21 @@ table product_demand_predictions
 	partition product_demand_predictions-product_demand_predictions = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "product_demand_predictions.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"product_category", type text},
-			        {"week", type date},
-			        {"actual_units_sold", Int64.Type},
-			        {"predicted_units_sold", Int64.Type},
-			        {"demand_trend", type text}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "product_demand_predictions.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"product_category", type text},
+				        {"week", type date},
+				        {"actual_units_sold", Int64.Type},
+				        {"predicted_units_sold", Int64.Type},
+				        {"demand_trend", type text}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

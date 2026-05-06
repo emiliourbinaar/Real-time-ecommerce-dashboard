@@ -2,5 +2,16 @@ model Model
 	culture: en-US
 	discourageImplicitMeasures
 
-	/// Update this path to point to your data/powerbi/ folder (use double backslashes)
-	expression DataFolderPath = "C:\\Users\\emili\\GitHub\\Real-time ecommerce dashboard\\data\\powerbi\\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+ref table campaign_performance
+ref table customer_churn_risk
+ref table dim_customers
+ref table dim_products
+ref table fact_orders
+ref table model_performance
+ref table product_demand_predictions
+ref table sales_channel_performance
+ref table sales_forecast
+ref table segment_performance
+ref table weekly_kpis
+ref table _Measures
+

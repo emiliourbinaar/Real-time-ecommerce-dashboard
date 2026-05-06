@@ -23,62 +23,63 @@ table model_performance
 
 	column MAE
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: none
 		sourceColumn: MAE
-		formatString: #,0.00
 
 	column RMSE
 		dataType: double
+		formatString: #,0.00
 		summarizeBy: none
 		sourceColumn: RMSE
-		formatString: #,0.00
 
 	column MAPE_pct
 		dataType: double
+		formatString: 0.00
 		summarizeBy: none
 		sourceColumn: MAPE_pct
-		formatString: 0.00
 
 	column Accuracy
 		dataType: double
+		formatString: 0.00%
 		summarizeBy: none
 		sourceColumn: Accuracy
-		formatString: 0.00%
 
 	column F1
 		dataType: double
+		formatString: 0.0000
 		summarizeBy: none
 		sourceColumn: F1
-		formatString: 0.0000
 
 	column ROC_AUC
 		dataType: double
+		formatString: 0.0000
 		summarizeBy: none
 		sourceColumn: ROC_AUC
-		formatString: 0.0000
 
 	partition model_performance-model_performance = m
 		mode: import
 		source =
-			let
-			    Source = Csv.Document(
-			        File.Contents(DataFolderPath & "model_performance.csv"),
-			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
-			    ),
-			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
-			        {"model", type text},
-			        {"algorithm", type text},
-			        {"target", type text},
-			        {"metric_type", type text},
-			        {"MAE", type number},
-			        {"RMSE", type number},
-			        {"MAPE_pct", type number},
-			        {"Accuracy", type number},
-			        {"F1", type number},
-			        {"ROC_AUC", type number}
-			    })
-			in
-			    #"Changed Type"
+				let
+				    Source = Csv.Document(
+				        File.Contents(DataFolderPath & "model_performance.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+				        {"model", type text},
+				        {"algorithm", type text},
+				        {"target", type text},
+				        {"metric_type", type text},
+				        {"MAE", type number},
+				        {"RMSE", type number},
+				        {"MAPE_pct", type number},
+				        {"Accuracy", type number},
+				        {"F1", type number},
+				        {"ROC_AUC", type number}
+				    })
+				in
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+
