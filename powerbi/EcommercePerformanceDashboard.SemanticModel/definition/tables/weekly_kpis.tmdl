@@ -1,0 +1,136 @@
+table weekly_kpis
+
+	column week_start
+		dataType: dateTime
+		isKey
+		summarizeBy: none
+		sourceColumn: week_start
+		formatString: Short Date
+
+	column total_revenue
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_revenue
+		formatString: #,0.00
+
+	column total_orders
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+	column total_units
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: total_units
+
+	column total_margin
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_margin
+		formatString: #,0.00
+
+	column avg_order_value
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_order_value
+		formatString: #,0.00
+
+	column unique_customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+	column avg_discount
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_discount
+		formatString: 0.00%
+
+	column visits
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: visits
+
+	column cart_additions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: cart_additions
+
+	column completed_orders
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: completed_orders
+
+	column gross_margin_pct
+		dataType: double
+		summarizeBy: average
+		sourceColumn: gross_margin_pct
+		formatString: 0.00%
+
+	column conversion_rate
+		dataType: double
+		summarizeBy: average
+		sourceColumn: conversion_rate
+		formatString: 0.00%
+
+	column cart_abandonment_rate
+		dataType: double
+		summarizeBy: average
+		sourceColumn: cart_abandonment_rate
+		formatString: 0.00%
+
+	column revenue_wow_growth
+		dataType: double
+		summarizeBy: none
+		sourceColumn: revenue_wow_growth
+		formatString: 0.00%
+
+	column orders_wow_growth
+		dataType: double
+		summarizeBy: none
+		sourceColumn: orders_wow_growth
+		formatString: 0.00%
+
+	column new_customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: new_customers
+
+	column repeat_customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: repeat_customers
+
+	partition weekly_kpis-weekly_kpis = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        File.Contents(DataFolderPath & "weekly_kpis.csv"),
+			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+			    ),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+			        {"week_start", type date},
+			        {"total_revenue", type number},
+			        {"total_orders", Int64.Type},
+			        {"total_units", Int64.Type},
+			        {"total_margin", type number},
+			        {"avg_order_value", type number},
+			        {"unique_customers", Int64.Type},
+			        {"avg_discount", type number},
+			        {"visits", Int64.Type},
+			        {"cart_additions", Int64.Type},
+			        {"completed_orders", Int64.Type},
+			        {"gross_margin_pct", type number},
+			        {"conversion_rate", type number},
+			        {"cart_abandonment_rate", type number},
+			        {"revenue_wow_growth", type number},
+			        {"orders_wow_growth", type number},
+			        {"new_customers", Int64.Type},
+			        {"repeat_customers", Int64.Type}
+			    })
+			in
+			    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -11,8 +11,10 @@ data/raw/
 data/processed/
 data/powerbi/
 
-# Power BI
+# Power BI — binary & cache files (the PBIP text files ARE tracked)
 *.pbix
+powerbi/**/.pbi/cache.abf
+powerbi/**/.pbi/localSettings.json
 
 # OS
 .DS_Store

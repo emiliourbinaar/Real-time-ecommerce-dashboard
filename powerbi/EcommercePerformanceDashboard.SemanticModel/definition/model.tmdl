@@ -1,0 +1,6 @@
+model Model
+	culture: en-US
+	discourageImplicitMeasures
+
+	/// Update this path to point to your data/powerbi/ folder (use double backslashes)
+	expression DataFolderPath = "C:\\Users\\emili\\GitHub\\Real-time ecommerce dashboard\\data\\powerbi\\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

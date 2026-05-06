@@ -1,0 +1,172 @@
+table _Measures
+	isHidden
+
+	/// ── Revenue & Orders ─────────────────────────────────────────────────────
+
+	measure 'Total Revenue' =
+			CALCULATE(SUM(fact_orders[revenue]), fact_orders[is_completed] = TRUE())
+		displayFolder: Revenue
+		formatString: #,0.00
+
+	measure 'Total Orders' =
+			CALCULATE(COUNTROWS(fact_orders), fact_orders[is_completed] = TRUE())
+		displayFolder: Orders
+		formatString: #,0
+
+	measure 'Average Order Value' =
+			DIVIDE([Total Revenue], [Total Orders], 0)
+		displayFolder: Revenue
+		formatString: #,0.00
+
+	measure 'Units Sold' =
+			CALCULATE(SUM(fact_orders[quantity]), fact_orders[is_completed] = TRUE())
+		displayFolder: Orders
+		formatString: #,0
+
+	measure 'Gross Margin' =
+			CALCULATE(SUM(fact_orders[margin]), fact_orders[is_completed] = TRUE())
+		displayFolder: Revenue
+		formatString: #,0.00
+
+	measure 'Gross Margin %' =
+			DIVIDE([Gross Margin], [Total Revenue], 0)
+		displayFolder: Revenue
+		formatString: 0.00%
+
+	/// ── Customers ────────────────────────────────────────────────────────────
+
+	measure 'Active Customers' =
+			CALCULATE(DISTINCTCOUNT(fact_orders[customer_id]), fact_orders[is_completed] = TRUE())
+		displayFolder: Customers
+		formatString: #,0
+
+	measure 'New Customers' =
+			SUM(weekly_kpis[new_customers])
+		displayFolder: Customers
+		formatString: #,0
+
+	measure 'Repeat Customers' =
+			CALCULATE(
+			    DISTINCTCOUNT(fact_orders[customer_id]),
+			    fact_orders[is_completed] = TRUE(),
+			    RELATED(dim_customers[is_repeat_customer]) = TRUE()
+			)
+		displayFolder: Customers
+		formatString: #,0
+
+	measure 'Repeat Customer Rate' =
+			DIVIDE([Repeat Customers], [Active Customers], 0)
+		displayFolder: Customers
+		formatString: 0.00%
+
+	/// ── Funnel ───────────────────────────────────────────────────────────────
+
+	measure 'Conversion Rate' =
+			DIVIDE(
+			    CALCULATE(SUM(fact_orders[completed_orders])),
+			    CALCULATE(SUM(fact_orders[visits])),
+			    0
+			)
+		displayFolder: Funnel
+		formatString: 0.00%
+
+	measure 'Cart Abandonment Rate' =
+			1 - DIVIDE(
+			    CALCULATE(SUM(fact_orders[completed_orders])),
+			    CALCULATE(SUM(fact_orders[cart_additions])),
+			    0
+			)
+		displayFolder: Funnel
+		formatString: 0.00%
+
+	/// ── WoW Growth ───────────────────────────────────────────────────────────
+
+	measure 'WoW Revenue Growth' =
+			VAR CurrentWeek =
+			    MAX(weekly_kpis[week_start])
+			VAR PrevWeek =
+			    CurrentWeek - 7
+			VAR ThisRev =
+			    CALCULATE(
+			        SUM(weekly_kpis[total_revenue]),
+			        weekly_kpis[week_start] = CurrentWeek
+			    )
+			VAR PrevRev =
+			    CALCULATE(
+			        SUM(weekly_kpis[total_revenue]),
+			        weekly_kpis[week_start] = PrevWeek
+			    )
+			RETURN
+			    DIVIDE(ThisRev - PrevRev, PrevRev, 0)
+		displayFolder: Growth
+		formatString: +0.00%;-0.00%;0.00%
+
+	measure 'WoW Orders Growth' =
+			VAR CurrentWeek =
+			    MAX(weekly_kpis[week_start])
+			VAR PrevWeek =
+			    CurrentWeek - 7
+			VAR ThisOrd =
+			    CALCULATE(
+			        SUM(weekly_kpis[total_orders]),
+			        weekly_kpis[week_start] = CurrentWeek
+			    )
+			VAR PrevOrd =
+			    CALCULATE(
+			        SUM(weekly_kpis[total_orders]),
+			        weekly_kpis[week_start] = PrevWeek
+			    )
+			RETURN
+			    DIVIDE(ThisOrd - PrevOrd, PrevOrd, 0)
+		displayFolder: Growth
+		formatString: +0.00%;-0.00%;0.00%
+
+	/// ── Predictive ───────────────────────────────────────────────────────────
+
+	measure 'Predicted Revenue' =
+			CALCULATE(
+			    SUM(sales_forecast[predicted_revenue]),
+			    NOT(ISBLANK(sales_forecast[predicted_revenue]))
+			)
+		displayFolder: Predictions
+		formatString: #,0.00
+
+	measure 'Forecast Error %' =
+			DIVIDE(
+			    ABS(SUM(sales_forecast[prediction_error])),
+			    SUM(sales_forecast[actual_revenue]),
+			    0
+			)
+		displayFolder: Predictions
+		formatString: 0.00%
+
+	measure 'High Risk Customers' =
+			CALCULATE(
+			    COUNTROWS(customer_churn_risk),
+			    customer_churn_risk[risk_level] = "High"
+			)
+		displayFolder: Predictions
+		formatString: #,0
+
+	measure 'Churn Risk Rate' =
+			DIVIDE([High Risk Customers], COUNTROWS(customer_churn_risk), 0)
+		displayFolder: Predictions
+		formatString: 0.00%
+
+	measure 'Increasing Demand Categories' =
+			CALCULATE(
+			    DISTINCTCOUNT(product_demand_predictions[product_category]),
+			    product_demand_predictions[demand_trend] = "Increasing"
+			)
+		displayFolder: Predictions
+		formatString: #,0
+
+	partition _Measures-_Measures = m
+		mode: import
+		source =
+			let
+			    Source = #table(type table [], {})
+			in
+			    Source
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,48 @@
+table product_demand_predictions
+
+	column product_category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: product_category
+
+	column week
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: week
+		formatString: Short Date
+
+	column actual_units_sold
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: actual_units_sold
+
+	column predicted_units_sold
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: predicted_units_sold
+
+	column demand_trend
+		dataType: string
+		summarizeBy: none
+		sourceColumn: demand_trend
+
+	partition product_demand_predictions-product_demand_predictions = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        File.Contents(DataFolderPath & "product_demand_predictions.csv"),
+			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+			    ),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+			        {"product_category", type text},
+			        {"week", type date},
+			        {"actual_units_sold", Int64.Type},
+			        {"predicted_units_sold", Int64.Type},
+			        {"demand_trend", type text}
+			    })
+			in
+			    #"Changed Type"
+
+	annotation PBI_ResultType = Table

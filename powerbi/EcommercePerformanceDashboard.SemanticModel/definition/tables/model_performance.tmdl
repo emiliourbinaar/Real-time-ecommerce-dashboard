@@ -1,0 +1,84 @@
+table model_performance
+
+	column model
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: model
+
+	column algorithm
+		dataType: string
+		summarizeBy: none
+		sourceColumn: algorithm
+
+	column target
+		dataType: string
+		summarizeBy: none
+		sourceColumn: target
+
+	column metric_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: metric_type
+
+	column MAE
+		dataType: double
+		summarizeBy: none
+		sourceColumn: MAE
+		formatString: #,0.00
+
+	column RMSE
+		dataType: double
+		summarizeBy: none
+		sourceColumn: RMSE
+		formatString: #,0.00
+
+	column MAPE_pct
+		dataType: double
+		summarizeBy: none
+		sourceColumn: MAPE_pct
+		formatString: 0.00
+
+	column Accuracy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: Accuracy
+		formatString: 0.00%
+
+	column F1
+		dataType: double
+		summarizeBy: none
+		sourceColumn: F1
+		formatString: 0.0000
+
+	column ROC_AUC
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ROC_AUC
+		formatString: 0.0000
+
+	partition model_performance-model_performance = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        File.Contents(DataFolderPath & "model_performance.csv"),
+			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+			    ),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+			        {"model", type text},
+			        {"algorithm", type text},
+			        {"target", type text},
+			        {"metric_type", type text},
+			        {"MAE", type number},
+			        {"RMSE", type number},
+			        {"MAPE_pct", type number},
+			        {"Accuracy", type number},
+			        {"F1", type number},
+			        {"ROC_AUC", type number}
+			    })
+			in
+			    #"Changed Type"
+
+	annotation PBI_ResultType = Table

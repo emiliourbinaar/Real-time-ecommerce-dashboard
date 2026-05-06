@@ -1,0 +1,78 @@
+table campaign_performance
+
+	column campaign_name
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+	column total_revenue
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_revenue
+		formatString: #,0.00
+
+	column total_orders
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+	column unique_customers
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+	column avg_order_value
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_order_value
+		formatString: #,0.00
+
+	column total_margin
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: total_margin
+		formatString: #,0.00
+
+	column avg_discount
+		dataType: double
+		summarizeBy: average
+		sourceColumn: avg_discount
+		formatString: 0.00%
+
+	column gross_margin_pct
+		dataType: double
+		summarizeBy: average
+		sourceColumn: gross_margin_pct
+		formatString: 0.00%
+
+	column revenue_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: revenue_share
+		formatString: 0.00%
+
+	partition campaign_performance-campaign_performance = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(
+			        File.Contents(DataFolderPath & "campaign_performance.csv"),
+			        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]
+			    ),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {
+			        {"campaign_name", type text},
+			        {"total_revenue", type number},
+			        {"total_orders", Int64.Type},
+			        {"unique_customers", Int64.Type},
+			        {"avg_order_value", type number},
+			        {"total_margin", type number},
+			        {"avg_discount", type number},
+			        {"gross_margin_pct", type number},
+			        {"revenue_share", type number}
+			    })
+			in
+			    #"Changed Type"
+
+	annotation PBI_ResultType = Table

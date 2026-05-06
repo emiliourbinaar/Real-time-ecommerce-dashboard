@@ -1,0 +1,68 @@
+{
+  "id": "ecommerce-performance-dashboard",
+  "version": "5.0",
+  "theme": {
+    "name": "CY24SU08",
+    "colors": [
+      "#1E8449",
+      "#2980B9",
+      "#8E44AD",
+      "#C0392B",
+      "#E67E22",
+      "#27AE60",
+      "#F39C12",
+      "#17202A"
+    ]
+  },
+  "sections": [
+    {
+      "id": "page1",
+      "displayName": "Executive Overview",
+      "ordinal": 1,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "id": "page2",
+      "displayName": "Weekly KPI Tracking",
+      "ordinal": 2,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "id": "page3",
+      "displayName": "Product & Category",
+      "ordinal": 3,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "id": "page4",
+      "displayName": "Customer & Segment",
+      "ordinal": 4,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "id": "page5",
+      "displayName": "Predictive Insights",
+      "ordinal": 5,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "id": "page6",
+      "displayName": "Model Performance",
+      "ordinal": 6,
+      "displayOption": 1,
+      "height": 720,
+      "width": 1280
+    }
+  ],
+  "config": "{\"version\":\"5.0\",\"activeSectionIndex\":0}"
+}
