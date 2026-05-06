@@ -1,0 +1,4 @@
+model,algorithm,target,metric_type,MAE,RMSE,MAPE_pct,Accuracy,F1,ROC_AUC
+Sales Forecast,GradientBoosting,weekly_revenue,Regression,5241.48,15348.08,2.44,,,
+Customer Churn Risk,LogisticRegression,is_churned,Classification,,,,0.9979,0.9863,1.0
+Product Demand,RandomForest,weekly_units_by_category,Regression,10.37,13.41,,,,

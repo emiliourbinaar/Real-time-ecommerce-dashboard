@@ -1,0 +1,81 @@
+product_id,product_name,product_category,unit_price,margin_pct
+P001,Laptop,Electronics,264.83,0.336
+P002,Monitor,Electronics,291.61,0.232
+P003,Keyboard,Electronics,492.91,0.314
+P004,Mouse,Electronics,608.74,0.289
+P005,Webcam,Electronics,530.47,0.337
+P006,Headset,Electronics,503.98,0.384
+P007,Desk Chair,Office Supply,128.73,0.503
+P008,Standing Desk,Office Supply,113.13,0.24
+P009,Notebook,Office Supply,153.37,0.468
+P010,Pen Set,Office Supply,76.83,0.333
+P011,Organizer,Office Supply,179.1,0.435
+P012,CRM License,Software,1432.63,0.361
+P013,ERP Module,Software,1134.0,0.283
+P014,Analytics Tool,Software,1392.78,0.305
+P015,Security Suite,Software,1204.66,0.317
+P016,Router,Networking,348.55,0.425
+P017,Switch,Networking,332.68,0.488
+P018,Access Point,Networking,305.79,0.4
+P019,Firewall,Networking,282.71,0.319
+P020,Cable Kit,Networking,312.02,0.223
+P021,Storage Plan,Cloud Services,415.03,0.407
+P022,Compute Credits,Cloud Services,753.31,0.405
+P023,CDN Package,Cloud Services,371.86,0.291
+P024,Backup Plan,Cloud Services,478.69,0.445
+P025,CDN Package Pro,Cloud Services,445.74,0.291
+P026,Compute Credits Pro,Cloud Services,1029.88,0.405
+P027,Webcam Pro,Electronics,641.9,0.337
+P028,Mouse Pro,Electronics,703.38,0.289
+P029,Standing Desk Pro,Office Supply,154.98,0.24
+P030,Notebook Pro,Office Supply,224.55,0.468
+P031,CDN Package Pro,Cloud Services,489.68,0.291
+P032,Desk Chair Pro,Office Supply,177.72,0.503
+P033,CDN Package Pro Pro,Cloud Services,599.09,0.291
+P034,Desk Chair Pro Pro,Office Supply,213.63,0.503
+P035,Organizer Pro,Office Supply,219.97,0.435
+P036,Compute Credits Pro,Cloud Services,1122.77,0.405
+P037,Firewall Pro,Networking,388.49,0.319
+P038,Security Suite Pro,Software,1336.32,0.317
+P039,Storage Plan Pro,Cloud Services,601.81,0.407
+P040,Router Pro,Networking,468.48,0.425
+P041,Security Suite Pro,Software,1776.12,0.317
+P042,Firewall Pro,Networking,407.55,0.319
+P043,Analytics Tool Pro,Software,1835.43,0.305
+P044,Analytics Tool Pro,Software,1804.94,0.305
+P045,Cable Kit Pro,Networking,384.92,0.223
+P046,Standing Desk Pro Pro,Office Supply,185.62,0.24
+P047,Firewall Pro,Networking,415.46,0.319
+P048,Analytics Tool Pro Pro,Software,2638.12,0.305
+P049,Cable Kit Pro Pro,Networking,538.12,0.223
+P050,Analytics Tool Pro Pro Pro,Software,3708.85,0.305
+P051,CRM License Pro,Software,1851.31,0.361
+P052,Storage Plan Pro Pro,Cloud Services,771.87,0.407
+P053,Firewall Pro Pro,Networking,527.54,0.319
+P054,ERP Module Pro,Software,1378.64,0.283
+P055,Switch Pro,Networking,443.92,0.488
+P056,Security Suite Pro,Software,1522.68,0.317
+P057,Switch Pro,Networking,474.54,0.488
+P058,ERP Module Pro,Software,1637.75,0.283
+P059,Desk Chair Pro Pro Pro,Office Supply,235.63,0.503
+P060,Pen Set Pro,Office Supply,94.84,0.333
+P061,Mouse Pro Pro,Electronics,1009.82,0.289
+P062,Cable Kit Pro Pro Pro,Networking,621.71,0.223
+P063,Analytics Tool Pro Pro,Software,2068.97,0.305
+P064,Cable Kit Pro Pro Pro,Networking,675.89,0.223
+P065,Standing Desk Pro Pro,Office Supply,182.42,0.24
+P066,Standing Desk Pro Pro Pro,Office Supply,211.9,0.24
+P067,Monitor Pro,Electronics,393.05,0.232
+P068,Standing Desk Pro Pro,Office Supply,228.31,0.24
+P069,Cable Kit Pro,Networking,351.91,0.223
+P070,Standing Desk Pro Pro Pro,Office Supply,263.74,0.24
+P071,Firewall Pro Pro,Networking,492.42,0.319
+P072,Switch Pro Pro,Networking,689.95,0.488
+P073,Switch Pro,Networking,380.83,0.488
+P074,Cable Kit Pro Pro Pro,Networking,771.13,0.223
+P075,Analytics Tool Pro Pro,Software,2329.89,0.305
+P076,Analytics Tool Pro,Software,1839.69,0.305
+P077,Firewall Pro,Networking,388.58,0.319
+P078,Storage Plan Pro Pro,Cloud Services,819.11,0.407
+P079,Laptop Pro,Electronics,397.18,0.336
+P080,Laptop Pro Pro,Electronics,518.95,0.336

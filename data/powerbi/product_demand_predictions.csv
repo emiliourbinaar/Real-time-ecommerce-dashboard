@@ -1,0 +1,286 @@
+product_category,week,actual_units_sold,demand_trend,predicted_units_sold
+Cloud Services,2024-01-29,41,Decreasing,42
+Cloud Services,2024-02-05,45,Decreasing,43
+Cloud Services,2024-02-12,34,Decreasing,39
+Cloud Services,2024-02-19,36,Decreasing,39
+Cloud Services,2024-02-26,39,Decreasing,40
+Cloud Services,2024-03-04,32,Decreasing,50
+Cloud Services,2024-03-11,25,Decreasing,51
+Cloud Services,2024-03-18,54,Decreasing,52
+Cloud Services,2024-03-25,20,Decreasing,31
+Cloud Services,2024-04-01,38,Decreasing,54
+Cloud Services,2024-04-08,27,Decreasing,32
+Cloud Services,2024-04-15,71,Decreasing,62
+Cloud Services,2024-04-22,61,Decreasing,47
+Cloud Services,2024-04-29,39,Decreasing,50
+Cloud Services,2024-05-06,50,Decreasing,57
+Cloud Services,2024-05-13,88,Decreasing,73
+Cloud Services,2024-05-20,73,Decreasing,63
+Cloud Services,2024-05-27,57,Decreasing,58
+Cloud Services,2024-06-03,65,Decreasing,61
+Cloud Services,2024-06-10,79,Decreasing,80
+Cloud Services,2024-06-17,73,Decreasing,76
+Cloud Services,2024-06-24,93,Decreasing,84
+Cloud Services,2024-07-01,50,Decreasing,88
+Cloud Services,2024-07-08,63,Decreasing,75
+Cloud Services,2024-07-15,60,Decreasing,81
+Cloud Services,2024-07-22,39,Decreasing,46
+Cloud Services,2024-07-29,80,Decreasing,66
+Cloud Services,2024-08-05,29,Decreasing,43
+Cloud Services,2024-08-12,45,Decreasing,55
+Cloud Services,2024-08-19,40,Decreasing,48
+Cloud Services,2024-08-26,61,Decreasing,60
+Cloud Services,2024-09-02,71,Decreasing,64
+Cloud Services,2024-09-09,60,Decreasing,63
+Cloud Services,2024-09-16,69,Decreasing,66
+Cloud Services,2024-09-23,68,Decreasing,67
+Cloud Services,2024-09-30,85,Decreasing,72
+Cloud Services,2024-10-07,93,Decreasing,89
+Cloud Services,2024-10-14,82,Decreasing,85
+Cloud Services,2024-10-21,60,Decreasing,76
+Cloud Services,2024-10-28,55,Decreasing,72
+Cloud Services,2024-11-04,104,Decreasing,91
+Cloud Services,2024-11-11,97,Decreasing,87
+Cloud Services,2024-11-18,88,Decreasing,90
+Cloud Services,2024-11-25,146,Decreasing,121
+Cloud Services,2024-12-02,99,Decreasing,109
+Cloud Services,2024-12-09,78,Decreasing,121
+Cloud Services,2024-12-16,67,Decreasing,106
+Cloud Services,2024-12-23,63,Decreasing,77
+Cloud Services,2024-12-30,63,Decreasing,67
+Cloud Services,2025-01-06,44,Decreasing,52
+Cloud Services,2025-01-13,58,Decreasing,58
+Cloud Services,2025-01-20,63,Decreasing,66
+Cloud Services,2025-01-27,82,Decreasing,71
+Cloud Services,2025-02-03,45,Decreasing,50
+Cloud Services,2025-02-10,67,Decreasing,63
+Cloud Services,2025-02-17,51,Decreasing,61
+Cloud Services,2025-02-24,41,Decreasing,55
+Electronics,2024-01-29,53,Stable,51
+Electronics,2024-02-05,66,Stable,60
+Electronics,2024-02-12,53,Stable,54
+Electronics,2024-02-19,60,Stable,51
+Electronics,2024-02-26,45,Stable,52
+Electronics,2024-03-04,58,Stable,59
+Electronics,2024-03-11,66,Stable,65
+Electronics,2024-03-18,43,Stable,56
+Electronics,2024-03-25,64,Stable,61
+Electronics,2024-04-01,40,Stable,63
+Electronics,2024-04-08,58,Stable,59
+Electronics,2024-04-15,56,Stable,64
+Electronics,2024-04-22,70,Stable,65
+Electronics,2024-04-29,70,Stable,63
+Electronics,2024-05-06,64,Stable,60
+Electronics,2024-05-13,75,Stable,65
+Electronics,2024-05-20,62,Stable,87
+Electronics,2024-05-27,43,Stable,52
+Electronics,2024-06-03,57,Stable,57
+Electronics,2024-06-10,53,Stable,60
+Electronics,2024-06-17,67,Stable,65
+Electronics,2024-06-24,57,Stable,62
+Electronics,2024-07-01,65,Stable,58
+Electronics,2024-07-08,56,Stable,60
+Electronics,2024-07-15,39,Stable,49
+Electronics,2024-07-22,62,Stable,65
+Electronics,2024-07-29,70,Stable,65
+Electronics,2024-08-05,33,Stable,48
+Electronics,2024-08-12,69,Stable,62
+Electronics,2024-08-19,65,Stable,60
+Electronics,2024-08-26,63,Stable,62
+Electronics,2024-09-02,79,Stable,68
+Electronics,2024-09-09,73,Stable,80
+Electronics,2024-09-16,63,Stable,85
+Electronics,2024-09-23,63,Stable,78
+Electronics,2024-09-30,94,Stable,80
+Electronics,2024-10-07,80,Stable,88
+Electronics,2024-10-14,84,Stable,81
+Electronics,2024-10-21,78,Stable,82
+Electronics,2024-10-28,94,Stable,85
+Electronics,2024-11-04,92,Stable,88
+Electronics,2024-11-11,52,Stable,74
+Electronics,2024-11-18,98,Stable,88
+Electronics,2024-11-25,77,Stable,83
+Electronics,2024-12-02,72,Stable,81
+Electronics,2024-12-09,93,Stable,93
+Electronics,2024-12-16,50,Stable,64
+Electronics,2024-12-23,105,Stable,92
+Electronics,2024-12-30,61,Stable,65
+Electronics,2025-01-06,57,Stable,64
+Electronics,2025-01-13,64,Stable,63
+Electronics,2025-01-20,50,Stable,76
+Electronics,2025-01-27,52,Stable,63
+Electronics,2025-02-03,75,Stable,72
+Electronics,2025-02-10,76,Stable,68
+Electronics,2025-02-17,38,Stable,47
+Electronics,2025-02-24,37,Stable,49
+Networking,2024-01-29,102,Stable,98
+Networking,2024-02-05,93,Stable,92
+Networking,2024-02-12,87,Stable,88
+Networking,2024-02-19,103,Stable,94
+Networking,2024-02-26,102,Stable,93
+Networking,2024-03-04,92,Stable,90
+Networking,2024-03-11,69,Stable,82
+Networking,2024-03-18,104,Stable,93
+Networking,2024-03-25,61,Stable,80
+Networking,2024-04-01,84,Stable,88
+Networking,2024-04-08,124,Stable,104
+Networking,2024-04-15,85,Stable,87
+Networking,2024-04-22,108,Stable,89
+Networking,2024-04-29,93,Stable,96
+Networking,2024-05-06,139,Stable,124
+Networking,2024-05-13,122,Stable,114
+Networking,2024-05-20,132,Stable,123
+Networking,2024-05-27,116,Stable,112
+Networking,2024-06-03,128,Stable,114
+Networking,2024-06-10,81,Stable,96
+Networking,2024-06-17,143,Stable,128
+Networking,2024-06-24,143,Stable,124
+Networking,2024-07-01,110,Stable,113
+Networking,2024-07-08,92,Stable,104
+Networking,2024-07-15,89,Stable,102
+Networking,2024-07-22,136,Stable,121
+Networking,2024-07-29,97,Stable,110
+Networking,2024-08-05,90,Stable,99
+Networking,2024-08-12,97,Stable,102
+Networking,2024-08-19,91,Stable,114
+Networking,2024-08-26,142,Stable,114
+Networking,2024-09-02,103,Stable,107
+Networking,2024-09-09,128,Stable,122
+Networking,2024-09-16,112,Stable,113
+Networking,2024-09-23,109,Stable,115
+Networking,2024-09-30,121,Stable,116
+Networking,2024-10-07,114,Stable,118
+Networking,2024-10-14,136,Stable,127
+Networking,2024-10-21,105,Stable,114
+Networking,2024-10-28,143,Stable,133
+Networking,2024-11-04,135,Stable,119
+Networking,2024-11-11,176,Stable,157
+Networking,2024-11-18,145,Stable,142
+Networking,2024-11-25,135,Stable,154
+Networking,2024-12-02,131,Stable,158
+Networking,2024-12-09,130,Stable,146
+Networking,2024-12-16,198,Stable,169
+Networking,2024-12-23,207,Stable,188
+Networking,2024-12-30,85,Stable,105
+Networking,2025-01-06,84,Stable,93
+Networking,2025-01-13,97,Stable,97
+Networking,2025-01-20,66,Stable,82
+Networking,2025-01-27,154,Stable,119
+Networking,2025-02-03,74,Stable,86
+Networking,2025-02-10,80,Stable,105
+Networking,2025-02-17,108,Stable,98
+Networking,2025-02-24,119,Stable,90
+Office Supply,2024-01-29,46,Increasing,49
+Office Supply,2024-02-05,58,Increasing,56
+Office Supply,2024-02-12,54,Increasing,55
+Office Supply,2024-02-19,43,Increasing,51
+Office Supply,2024-02-26,46,Increasing,54
+Office Supply,2024-03-04,55,Increasing,62
+Office Supply,2024-03-11,89,Increasing,75
+Office Supply,2024-03-18,56,Increasing,59
+Office Supply,2024-03-25,72,Increasing,65
+Office Supply,2024-04-01,58,Increasing,62
+Office Supply,2024-04-08,106,Increasing,91
+Office Supply,2024-04-15,113,Increasing,107
+Office Supply,2024-04-22,72,Increasing,85
+Office Supply,2024-04-29,87,Increasing,89
+Office Supply,2024-05-06,71,Increasing,80
+Office Supply,2024-05-13,112,Increasing,88
+Office Supply,2024-05-20,106,Increasing,100
+Office Supply,2024-05-27,106,Increasing,91
+Office Supply,2024-06-03,103,Increasing,100
+Office Supply,2024-06-10,117,Increasing,109
+Office Supply,2024-06-17,72,Increasing,90
+Office Supply,2024-06-24,85,Increasing,90
+Office Supply,2024-07-01,66,Increasing,77
+Office Supply,2024-07-08,88,Increasing,86
+Office Supply,2024-07-15,125,Increasing,102
+Office Supply,2024-07-22,80,Increasing,85
+Office Supply,2024-07-29,76,Increasing,82
+Office Supply,2024-08-05,52,Increasing,74
+Office Supply,2024-08-12,82,Increasing,84
+Office Supply,2024-08-19,66,Increasing,81
+Office Supply,2024-08-26,103,Increasing,89
+Office Supply,2024-09-02,101,Increasing,98
+Office Supply,2024-09-09,105,Increasing,88
+Office Supply,2024-09-16,98,Increasing,93
+Office Supply,2024-09-23,101,Increasing,102
+Office Supply,2024-09-30,113,Increasing,108
+Office Supply,2024-10-07,95,Increasing,103
+Office Supply,2024-10-14,100,Increasing,109
+Office Supply,2024-10-21,71,Increasing,109
+Office Supply,2024-10-28,97,Increasing,93
+Office Supply,2024-11-04,128,Increasing,105
+Office Supply,2024-11-11,141,Increasing,126
+Office Supply,2024-11-18,111,Increasing,116
+Office Supply,2024-11-25,150,Increasing,136
+Office Supply,2024-12-02,122,Increasing,122
+Office Supply,2024-12-09,114,Increasing,127
+Office Supply,2024-12-16,89,Increasing,119
+Office Supply,2024-12-23,154,Increasing,126
+Office Supply,2024-12-30,85,Increasing,89
+Office Supply,2025-01-06,60,Increasing,74
+Office Supply,2025-01-13,62,Increasing,71
+Office Supply,2025-01-20,102,Increasing,88
+Office Supply,2025-01-27,43,Increasing,64
+Office Supply,2025-02-03,79,Increasing,65
+Office Supply,2025-02-10,74,Increasing,85
+Office Supply,2025-02-17,98,Increasing,87
+Office Supply,2025-02-24,45,Increasing,65
+Software,2024-01-29,55,Stable,56
+Software,2024-02-05,51,Stable,53
+Software,2024-02-12,61,Stable,55
+Software,2024-02-19,56,Stable,56
+Software,2024-02-26,65,Stable,55
+Software,2024-03-04,79,Stable,68
+Software,2024-03-11,50,Stable,55
+Software,2024-03-18,85,Stable,74
+Software,2024-03-25,96,Stable,96
+Software,2024-04-01,80,Stable,86
+Software,2024-04-08,61,Stable,81
+Software,2024-04-15,79,Stable,83
+Software,2024-04-22,75,Stable,84
+Software,2024-04-29,80,Stable,85
+Software,2024-05-06,115,Stable,98
+Software,2024-05-13,108,Stable,93
+Software,2024-05-20,70,Stable,83
+Software,2024-05-27,90,Stable,86
+Software,2024-06-03,91,Stable,88
+Software,2024-06-10,98,Stable,90
+Software,2024-06-17,90,Stable,89
+Software,2024-06-24,111,Stable,85
+Software,2024-07-01,84,Stable,85
+Software,2024-07-08,63,Stable,77
+Software,2024-07-15,73,Stable,80
+Software,2024-07-22,100,Stable,91
+Software,2024-07-29,60,Stable,84
+Software,2024-08-05,98,Stable,83
+Software,2024-08-12,86,Stable,90
+Software,2024-08-19,69,Stable,81
+Software,2024-08-26,89,Stable,88
+Software,2024-09-02,101,Stable,95
+Software,2024-09-09,69,Stable,83
+Software,2024-09-16,89,Stable,87
+Software,2024-09-23,126,Stable,93
+Software,2024-09-30,95,Stable,92
+Software,2024-10-07,114,Stable,88
+Software,2024-10-14,119,Stable,114
+Software,2024-10-21,118,Stable,119
+Software,2024-10-28,162,Stable,117
+Software,2024-11-04,123,Stable,121
+Software,2024-11-11,108,Stable,118
+Software,2024-11-18,109,Stable,113
+Software,2024-11-25,162,Stable,119
+Software,2024-12-02,127,Stable,122
+Software,2024-12-09,100,Stable,119
+Software,2024-12-16,84,Stable,101
+Software,2024-12-23,118,Stable,124
+Software,2024-12-30,64,Stable,83
+Software,2025-01-06,99,Stable,84
+Software,2025-01-13,38,Stable,54
+Software,2025-01-20,46,Stable,65
+Software,2025-01-27,85,Stable,79
+Software,2025-02-03,53,Stable,57
+Software,2025-02-10,62,Stable,65
+Software,2025-02-17,97,Stable,84
+Software,2025-02-24,64,Stable,68
