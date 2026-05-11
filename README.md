@@ -129,7 +129,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-This generates ~35,000 synthetic orders across 14 months, cleans them, engineers features, calculates KPIs, trains 3 ML models, and exports 11 CSV files to `data/powerbi/`.
+This generates ~11,700 synthetic orders across 14 months, cleans them, engineers features, calculates KPIs, trains 3 ML models, and exports 12 CSV files to `data/powerbi/`.
 
 ### 3. Re-run without regenerating data
 
@@ -145,12 +145,20 @@ Useful for re-running KPI and ML steps after parameter changes.
 
 1. Open **Power BI Desktop**.
 2. Click **Get Data → Text/CSV**.
-3. Navigate to `data/powerbi/` and import all 11 CSV files.
-4. In the **Data Model** view, set the relationships described in `reports/powerbi_page_plan.md`.
+3. Navigate to `data/powerbi/` and import all 12 CSV files.
+4. In the **Model view**, create the relationships described in `reports/powerbi_page_plan.md`.
 5. Create the DAX measures from the same file (copy-paste ready).
-6. Build the 6 dashboard pages as described in the page plan.
+6. Build the 5 dashboard pages as described in the page plan.
 
 > All date columns are already formatted as YYYY-MM-DD for seamless Power BI parsing.
+
+See `reports/powerbi_page_plan.md` for the full setup guide including relationships, DAX measures, and page-by-page visual instructions.
+
+---
+
+## Dashboard Report
+
+A completed export of the Power BI report is available as a PDF in the `reports/` folder. It includes all 5 dashboard pages and can be viewed without Power BI Desktop installed.
 
 ---
 
@@ -163,7 +171,6 @@ Useful for re-running KPI and ML steps after parameter changes.
 | Product & Category | Merchandising | Which products drive revenue and margin? |
 | Customer & Segment | CRM, marketing | Who are our most valuable customers? |
 | Predictive Insights | Commercial team | What will revenue look like next month? Who might churn? |
-| Model Performance | Data / analytics team | How reliable are the ML predictions? |
 
 ---
 
@@ -171,17 +178,18 @@ Useful for re-running KPI and ML steps after parameter changes.
 
 | File | Rows (approx.) | Purpose |
 |------|---------------|---------|
-| `fact_orders.csv` | ~35,000 | Main transaction fact table |
-| `dim_customers.csv` | 500 | Customer master with RFM attributes |
+| `fact_orders.csv` | ~11,700 | Main transaction fact table |
+| `dim_customers.csv` | ~490 | Customer master with RFM attributes |
 | `dim_products.csv` | 80 | Product master |
-| `weekly_kpis.csv` | ~60 | Pre-aggregated weekly KPIs |
+| `dim_date.csv` | ~466 | Date dimension (day-level, with week/month/quarter) |
+| `weekly_kpis.csv` | ~61 | Pre-aggregated weekly KPIs |
 | `campaign_performance.csv` | 9 | Revenue by marketing campaign |
 | `sales_channel_performance.csv` | 4 | Revenue by channel |
 | `segment_performance.csv` | 4 | Revenue by customer segment |
-| `sales_forecast.csv` | ~65 | Actual + predicted revenue + 4-week forecast |
-| `customer_churn_risk.csv` | 500 | Churn probability per customer |
-| `product_demand_predictions.csv` | ~300 | Category-level demand with trend labels |
-| `model_performance.csv` | 3 | Metrics for all three ML models |
+| `sales_forecast.csv` | ~61 | Actual + predicted revenue + 4-week forecast (`is_future` flag) |
+| `customer_churn_risk.csv` | ~482 | Churn probability per customer (Low / Medium / High) |
+| `product_demand_predictions.csv` | ~285 | Category-level demand with trend labels |
+| `model_performance.csv` | 8 | ML model metrics in long format (one row per model × metric) |
 
 ---
 
