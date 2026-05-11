@@ -9,7 +9,7 @@ venv/
 # Generated data (reproduce with python main.py)
 data/raw/
 data/processed/
-data/powerbi/
+# data/powerbi/ CSVs are tracked so Streamlit Cloud can serve the app without running the pipeline
 
 # Power BI — binary & cache files (the PBIP text files ARE tracked)
 *.pbix

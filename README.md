@@ -156,6 +156,16 @@ See `reports/powerbi_page_plan.md` for the full setup guide including relationsh
 
 ---
 
+## Streamlit Dashboard
+
+An interactive web dashboard built with Streamlit and Plotly covers two pages — Executive Overview and Predictive Insights — and can be viewed in any browser without Power BI Desktop.
+
+```bash
+streamlit run app.py
+```
+
+---
+
 ## Dashboard Report
 
 A completed export of the Power BI report is available as `ecommerce_dashboard.pdf` in the root of this repository. It includes all 5 dashboard pages and can be viewed without Power BI Desktop installed.
