@@ -158,7 +158,7 @@ See `reports/powerbi_page_plan.md` for the full setup guide including relationsh
 
 ## Dashboard Report
 
-A completed export of the Power BI report is available as a PDF in the `reports/` folder. It includes all 5 dashboard pages and can be viewed without Power BI Desktop installed.
+A completed export of the Power BI report is available as `ecommerce_dashboard.pdf` in the root of this repository. It includes all 5 dashboard pages and can be viewed without Power BI Desktop installed.
 
 ---
 
